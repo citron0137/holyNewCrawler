@@ -1,14 +1,74 @@
 package Struct;
 
+import bttSQL.DBHandler;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 public class PostDTO {
-    private String board_link;
+    private int seq;
+    private int board_seq;
     private String post_link;
     private String post_name;
     private String user_id;
-    private Date post_date;
+    private LocalDateTime post_date;
     List<TorrentFileDTO> torrents;
+    List<PostImageDTO> images;
+
+
+    public PostDTO(
+        int board_seq,
+        String post_link,
+        String post_name,
+        String user_id,
+        LocalDateTime post_date,
+        List<TorrentFileDTO> torrents,
+        List<PostImageDTO> images
+    ){
+        this.board_seq = board_seq;
+        this.post_name = post_name;
+        this.post_link = post_link;
+        this.user_id = user_id;
+        this.post_date = post_date;
+        this.torrents = torrents;
+        this.images = images;
+    }
+
+    public LocalDateTime getPost_date() {
+        return post_date;
+    }
+
+    public int getBoard_seq() {
+        return board_seq;
+    }
+
+    public void setSeq(int seq) {
+        this.seq = seq;
+    }
+
+    public int getSeq() {
+        return seq;
+    }
+
+    public List<PostImageDTO> getImages() {
+        return images;
+    }
+
+    public List<TorrentFileDTO> getTorrents() {
+        return torrents;
+    }
+
+    public String getPost_link() {
+        return post_link;
+    }
+
+    public String getPost_name() {
+        return post_name;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
 
 }
