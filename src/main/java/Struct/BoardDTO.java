@@ -6,6 +6,7 @@ public class BoardDTO {
     private int site_seq;
 
     public BoardDTO() { }
+
     public BoardDTO(
             int seq,
             int site_seq,
@@ -17,5 +18,7 @@ public class BoardDTO {
 
     }
 
-
+    public String getBoardUrl() {
+        return  BOARD_URL;
+    }
 }

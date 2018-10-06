@@ -16,7 +16,7 @@ public class PostDTO {
     List<TorrentFileDTO> torrents;
     List<PostImageDTO> images;
 
-
+    public PostDTO(){}
     public PostDTO(
         int board_seq,
         String post_link,
@@ -71,4 +71,31 @@ public class PostDTO {
         return user_id;
     }
 
+    public void setPost_link(String post_link) {
+        this.post_link = post_link;
+    }
+
+    public void setBoard_seq(int board_seq) {
+        this.board_seq = board_seq;
+    }
+
+    public void setPost_date(LocalDateTime post_date) {
+        this.post_date = post_date;
+    }
+
+    public void setPost_name(String post_name) {
+        this.post_name = post_name;
+    }
+
+    public void setTorrents(List<TorrentFileDTO> torrents) {
+        this.torrents = torrents;
+    }
+
+    public void setImages(List<PostImageDTO> images) {
+        this.images = images;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
 }

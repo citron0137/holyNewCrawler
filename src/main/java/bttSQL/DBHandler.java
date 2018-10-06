@@ -85,7 +85,7 @@ public class DBHandler {
             eachTorrent.setPost_seq(post.getSeq());
             insertTorrent(eachTorrent);
         }
-        if(post.getTorrents() != null) {
+        if(post.getImages() != null) {
             for (PostImageDTO eachImage : post.getImages()) {
                 eachImage.setPost_seq(post.getSeq());
                 insertPostImg(eachImage);

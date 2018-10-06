@@ -7,6 +7,13 @@ public class TorrentFileDTO {
     private int file_size;
 
     public TorrentFileDTO(
+            String magnet,
+            String infohash_dir
+    ){
+        this. magnet = magnet;
+        this.infohash_dir = infohash_dir;
+    }
+    public TorrentFileDTO(
             int post_seq,
             String magnet,
             String infohash_dir
