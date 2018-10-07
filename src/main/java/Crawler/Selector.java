@@ -1,8 +1,8 @@
 package Crawler;
 
 public class Selector {
-    public int LAST_UPDATED_IDX;
 
+    public int LAST_UPDATED_IDX;
     public String BOARD_URL;
     public String LAST_UPDATED_SELECTOR;
     public String BOARD_BASE_URL;

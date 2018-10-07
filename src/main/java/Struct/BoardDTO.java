@@ -1,9 +1,12 @@
 package Struct;
 
+import Crawler.Selector;
+
 public class BoardDTO {
     private String BOARD_URL;
     private int seq;
     private int site_seq;
+    private Selector selector;
 
     public BoardDTO() { }
 
@@ -20,5 +23,17 @@ public class BoardDTO {
 
     public String getBoardUrl() {
         return  BOARD_URL;
+    }
+
+    public void setSelector(Selector selector) {
+        this.selector = selector;
+    }
+
+    public Selector getSelector() {
+        return selector;
+    }
+
+    public int getSeq() {
+        return seq;
     }
 }

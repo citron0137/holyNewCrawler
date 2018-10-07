@@ -6,6 +6,7 @@ public class TorrentFileDTO {
     private String infohash_dir;
     private int file_size;
 
+    public TorrentFileDTO(){}
     public TorrentFileDTO(
             String magnet,
             String infohash_dir
@@ -40,5 +41,13 @@ public class TorrentFileDTO {
 
     public String getInfohash_dir() {
         return infohash_dir;
+    }
+
+    public void setInfohash_dir(String infohash_dir) {
+        this.infohash_dir = infohash_dir;
+    }
+
+    public void setMagnet(String magnet) {
+        this.magnet = magnet;
     }
 }
