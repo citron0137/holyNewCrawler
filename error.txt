@@ -1,0 +1,18 @@
+https://torrentlin.com/bbs/board.php?bo_table=torrent_movie_3d
+->java.lang.NullPointerException
+
+https://torrentlin.com/bbs/board.php?bo_table=torrent_movie_3d
+->java.lang.NullPointerException
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie
+->java.lang.IllegalArgumentException: Unknown pattern letter: t
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie
+->java.lang.IllegalArgumentException: Unknown pattern letter: t
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie
+->java.lang.IllegalArgumentException: Unknown pattern letter: T
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie
+->java.time.format.DateTimeParseException: Text '2018-10-16KST01:32:02' could not be parsed at index 10
+
