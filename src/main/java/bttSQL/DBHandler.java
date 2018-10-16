@@ -61,25 +61,20 @@ public class DBHandler {
         return true;
     }
 
-    public boolean insertPost(PostDTO post){
+    public void insertPost(PostDTO post) throws Exception{
         String col = "board_link, post_link, post_name, post_date, user_id";
         String values = "'"+post.getBoard_seq()+"', '"+post.getPost_link() + "','" + post.getPost_name()+"', '"+post.getPost_date() +"','"+post.getUser_id()+"'";
         String SQL_Q = "insert post ("+col+") values ("+values+")";
         System.out.println(SQL_Q);
-        try {
+
             this.stat.execute(SQL_Q);
             ResultSet rs = this.stat.executeQuery("select * from post where ("+col+") = ("+values+")");
             if(rs.next()) {
                 post.setSeq(Integer.parseInt(rs.getString(1)));
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
         if(post.getTorrents() == null) {
             System.out.println("no torrents file");
-            return false;
+            return;
         }
         for (TorrentFileDTO eachTorrent: post.getTorrents()) {
             eachTorrent.setPost_seq(post.getSeq());
@@ -91,10 +86,9 @@ public class DBHandler {
                 insertPostImg(eachImage);
             }
         }
-        return true;
     }
 
-    public void insertPosts(List<PostDTO> posts){
+    public void insertPosts(List<PostDTO> posts) throws Exception{
         for (PostDTO iter: posts) {
             insertPost(iter);
         }
@@ -163,5 +157,37 @@ public class DBHandler {
             return false;
         }
         return true;
+    }
+
+    public String getJDBC_DRIVER() {
+        return JDBC_DRIVER;
+    }
+
+    public String getSQL_URL() {
+        return SQL_URL;
+    }
+
+    public String getSQL_USER() {
+        return SQL_USER;
+    }
+
+    public String getSQL_PW() {
+        return SQL_PW;
+    }
+
+    public Connection getCon() {
+        return con;
+    }
+
+    public void setCon(Connection con) {
+        this.con = con;
+    }
+
+    public Statement getStat() {
+        return stat;
+    }
+
+    public void setStat(Statement stat) {
+        this.stat = stat;
     }
 }
