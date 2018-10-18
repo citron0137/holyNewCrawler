@@ -136,7 +136,7 @@ public class BeeTorrentCrawl implements Crawler{
         System.out.println("시간 확인");
 
         Document rawPost = Jsoup.connect(board.getSelector().POST_BASE_URL+postNum)
-                .header("Origin", "http://torrentlin.com")
+                .header("Origin", this.SITE_URL)
                 .header("Referer", board.getBoardUrl())
                 .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
                 .header("Content-Type", "text/html;charset=iso-8859-1")

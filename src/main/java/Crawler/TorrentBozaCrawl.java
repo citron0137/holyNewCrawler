@@ -150,16 +150,16 @@ public class TorrentBozaCrawl implements Crawler {
     public PostDTO getPost(BoardDTO board, int postNum) throws Exception {
 
         Thread.sleep(10000);
-
-            Document rawPost = Jsoup.connect(board.getSelector().POST_BASE_URL+postNum)
-                    .timeout(10000)
-                    .header("Origin", this.SITE_URL)
-                    .header("Referer", board.getBoardUrl())
-                    .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
-                    .header("Content-Type", "text/html;charset=iso-8859-1")
-                    .method(Connection.Method.GET)
-                    .ignoreContentType(true)
-                    .get();
+        System.out.println(board.getSelector().POST_BASE_URL+postNum);
+        Document rawPost = Jsoup.connect(board.getSelector().POST_BASE_URL+postNum)
+                .timeout(10000)
+                .header("Origin", this.SITE_URL)
+                .header("Referer", board.getBoardUrl())
+                .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
+                .header("Content-Type", "text/html;charset=iso-8859-1")
+                .method(Connection.Method.GET)
+                .ignoreContentType(true)
+                .get();
         String title = selectFromDoc(rawPost,board.getSelector().TITLE_SELECTOR);
         String userName = selectFromDoc(rawPost,board.getSelector().USER_NAME_SELECTOR);
         String dateString=rawPost.select(board.getSelector().CREATED_DATE_SELECTOR).attr("content").replace("K"," ").replace("S"," ").replace("T"," ");
@@ -226,19 +226,19 @@ public class TorrentBozaCrawl implements Crawler {
     public List<TorrentFileDTO> saveTorrentFile(PostDTO post, BoardDTO boardDTO) {
         List<TorrentFileDTO> torrentFiles = new ArrayList<>();
         try {
-            Connection.Response loginPageResponse = Jsoup.connect(post.getPost_link())
-                    .timeout(3000)
-                    .header("Origin", "http://torrentlin.com")
-                    .header("Referer", "http://torrentlin.com")
+
+            Document tmpDocument = Jsoup.connect(post.getPost_link())
+                    .timeout(10000)
+                    .header("Origin", this.SITE_URL)
+                    .header("Referer", board.getBoardUrl())
                     .header("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
-                    .header("Content-Type", "application/x-www-form-urlencoded")
+                    .header("Content-Type", "text/html;charset=iso-8859-1")
                     .method(Connection.Method.GET)
-                    .execute();
-            Map<String, String> cookie = loginPageResponse.cookies();
-            Document tmpDocument = loginPageResponse.parse();
+                    .ignoreContentType(true)
+                    .get();
 
-            Elements elems2 = tmpDocument.select("body > div > table > tbody > tr:nth-child(6) > td > table > tbody > tr > td:nth-child(1) > div:nth-child(2) > table:nth-child(3) > tbody > tr > td > div:nth-child(2) > table:nth-child(3) > tbody > tr > td > div > div a[href]");
 
+            Elements elems2 = tmpDocument.select("#thema_wrapper > div.at-body > div > div > div.col-md-9.pull-right.at-col.at-main > div.view-wrap > section > article > div:nth-child(3) > div.view-content > p > img");
             TorrentFileDTO tmpTorrent = new TorrentFileDTO();
             tmpTorrent.setPost_seq(post.getSeq());
 
@@ -272,7 +272,6 @@ public class TorrentBozaCrawl implements Crawler {
                             .header("Accept-Encoding", "gzip, deflate, br")
 //                                    .header("Accept-Language", "ko-KR,ko;q=0.8,en-US;q=0.6,en;q=0.4")
                             .method(Connection.Method.GET)
-                            .cookies(cookie)
                             .ignoreContentType(true)
                             .execute();
 
@@ -318,10 +317,8 @@ public class TorrentBozaCrawl implements Crawler {
                     .ignoreContentType(true)
                     .get();
             //TODO 셀렉터 등록하기
-            Elements elems = tmpDocument.select("#writeContents > article > img");
+            Elements elems = tmpDocument.select("#thema_wrapper > div.at-body > div > div > div.col-md-9.pull-right.at-col.at-main > div.view-wrap > section > article > div:nth-child(3) > div.view-content > a > img");
             for (Element elem : elems){
-
-
 
                 Pattern p = Pattern.compile("\\.\\.[/_0-9a-zA-Z]*\\.(jpg|png|gif)");
                 Matcher m = p.matcher(elem.toString());
@@ -361,7 +358,7 @@ public class TorrentBozaCrawl implements Crawler {
             return null;
         }
         return postImageDTOS;
-    }
+     }
 
     public PostDTO getLastPost(BoardDTO board) throws Exception{
         this.board = board;

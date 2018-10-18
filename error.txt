@@ -16,3 +16,33 @@ https://torrentboza.com/bbs/board.php?bo_table=ko_movie
 https://torrentboza.com/bbs/board.php?bo_table=ko_movie
 ->java.time.format.DateTimeParseException: Text '2018-10-16KST01:32:02' could not be parsed at index 10
 
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie
+->java.net.SocketTimeoutException: Read timed out
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie
+->java.net.SocketTimeoutException: Read timed out
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie
+->java.net.SocketTimeoutException: Read timed out
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie
+->java.net.SocketTimeoutException: Read timed out
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie&wr_id=7609 
+-> java.time.format.DateTimeParseException: Text '' could not be parsed at index 0
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie&wr_id=7609 
+-> java.net.SocketTimeoutException: Read timed out
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie&wr_id=7606 
+-> java.net.SocketTimeoutException: Read timed out
+
+https://torrentboza.com/bbs/board.php?bo_table=ko_movie
+->java.net.SocketTimeoutException: Read timed out
+
+https://beetorrent.com/영화/최신영화/?board_name=newmovie
+->java.lang.NullPointerException
+
+https://beetorrent.com/영화/최신영화/?board_name=newmovie
+->java.lang.NullPointerException
+
